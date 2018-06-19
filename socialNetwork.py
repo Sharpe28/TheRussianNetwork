@@ -5,60 +5,98 @@
 class User:
 
     ##Constructor of class for Social Network Functions
-    def __init__(self, firstName, lastName, username, bio, userID):
-        self.firstName = firstName
-        self.lastName = lastName
+    def __init__(self, username):
+        self.firstName = ""
+        self.lastName = ""
         self.username = username
-        self.bio = bio
-        self.userID = userID
+        self.bio = ""
         self.friends = []
         self.posts = []
 
+    ##function to add in a first name
+    def addFirstName(self, firstName):
+        self.firstName = firstName
+
+    ##function to add in a last name
+    def addLastName(self, lastName):
+        self.lastName = lastName
+
+    ##function to add in a bio
+    def addBio(self, bio):
+        self.bio = bio
+    
     ##Person has been added to your friendlist function
-    def addFriend(self, username):
-        self.friends.append(username)
+    def addFriend(self, obj):
+        self.friends.append(obj)
 
     ##Person has been removed from your friendlist function
-##    def unFriend():
-##
-    ##See all your friend's posts function
-    def viewNewsFeed(self, friends):
-        for friendPost in self.friends:
-            print(friends.posts)
+    def unFriend(self, obj):
+        for theDeletees in self.friends:
+            if theDeletees.username == obj.username:
+                self.friends.remove(obj)
 
+    ##function to add in a post
+    def addPost(self, posts):
+        self.posts = posts
+        
+    ##See all your friend's posts function
+    def viewNewsFeed(self):
+        for friendPost in self.friends:
+            print(friendPost.posts)
+
+    ##See your Friend List
+    def viewFriends(self):
+        for friendParty in self.friends:
+            print(friendParty.username)
+
+##MAIN FUNCTION
 if __name__ == "__main__":
 
-    ##Sharp account customizations
-    firstName = "FredFred"
-    lastName = "Burger"
-    username = "ReaperMain1998"
-    bio = "BlASTFOME"
-    userID = "4279"
-
     ##Users/Friends
-    sharp = User(firstName, lastName, username, bio, userID)
-    radndy = User("Randndy", "Bonson", "FootMassages73", "I know KARATE!", "429")
-    jericho = User("Jericho","Wanton","ChillyWillyHilly","Do you want a piece of candy?","720")
+    sharp = User("ReaperMain1998")
+    radndy = User("FootMassages73")
+    jericho = User("ChillyWillyHilly")
 
     ##Sharp stuff
-    print(sharp.firstName)
+    sharp.addFirstName("FredFred")
+    sharp.addBio("BlASTFOME")
+    sharp.addLastName("Burger")
 
     ##Radndy stuff
-    print(radndy.firstName)
-    sharp.addFriend(radndy)
-    ##Radndy's Post
-    radndy.posts.append("this is first post")
-##    radndyPost = radndy.posts
-##    print(radndyPost)
+    radndy.addFirstName("Randndy")
+    radndy.addBio("I know KARATE!")
+    radndy.addLastName("Bonson")
 
+    ##Add Radndy to Friend List
+    sharp.addFriend(radndy)
+
+    ##Radndy's Post
+    radndy.addPost("this is first pot")
 
     ##Jericho stuff
-    print(jericho.firstName)
+    jericho.addFirstName("Jericho")
+    jericho.addBio("Do you want a piece of candy?")
+    jericho.addLastName("Wanton")
+    
+    ##Add Jericho to Friends List
     sharp.addFriend(jericho)
+
     ##Jericho's Post
-    jericho.posts.append("Tell me story ;)")
-##    jerichoPost = jericho.posts
-##    print(jerichoPost)
+    jericho.addPost("Tell me story ;)")
+
+
+##The Attempt to Show Friend List Thing
+print("This is your Friend List: ")
+sharp.viewFriends()
 
 ##The Attempt to Show News Feed Thing
-sharp.viewNewsFeed(username)
+print("This is your News Feed: ")
+sharp.viewNewsFeed()
+
+##The Attempt to delete a friend Thing
+sharp.unFriend(jericho)
+
+##The supposively updated Friend List
+print("This is your *UPDATED* Friend List: ")
+sharp.viewFriends()
+
