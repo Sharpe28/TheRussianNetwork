@@ -1,5 +1,5 @@
 ## Made by: Joshwai Sharp
-## My Social Network
+## My Social Network(RUSSIAN NETWORK)
 
 
 class User:
@@ -84,6 +84,8 @@ if __name__ == "__main__":
     ##Jericho's Post
     jericho.addPost("Tell me story ;)")
 
+
+##RUSSIAN NETWORK FUNCTIONS
 
 ##The Attempt to Show Friend List Thing
 print("This is your Friend List: ")
