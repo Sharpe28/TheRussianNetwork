@@ -12,6 +12,7 @@ class User:
         self.bio = ""
         self.friends = []
         self.posts = []
+        self.userID = ""
 
     ##function to add in a first name
     def addFirstName(self, firstName):
@@ -49,56 +50,102 @@ class User:
         for friendParty in self.friends:
             print(friendParty.username)
 
+    ##Create a post function
+    def createPost(self, content):
+        myPost = Post(content)
+        self.posts.append(myPost)
+        myPost.createPostID(len(posts))
+
+    ##Function to give a new user a unique ID Number
+    def createUserID(self, num):
+        self.userID = num
+
+        
+##This A Class for Post
+class Post:
+    def __init__(self, content):
+        self.content = content
+        self.postID = ""
+        self.comments = []
+
+    ##Function to give a new post a unique ID Number
+    def createPostID(self, num):
+        self.postID = num
+
+
+##This A Class for Network
+class Network:
+    def __init__(self):
+        self.users = []
+
+    ##Function to make a new user
+    def createUser(self, username):
+        myUser = User(username)
+        self.users.append(myUser)
+        myUser.createUserID(len(self.users))
+
+
+
 ##MAIN FUNCTION
 if __name__ == "__main__":
 
+
+    ##Creation of a network
+    russia = Network()
+    
     ##Users/Friends
-    sharp = User("ReaperMain1998")
-    radndy = User("FootMassages73")
-    jericho = User("ChillyWillyHilly")
+    russia.createUser("Sharp")
+    print("kakke")
+    russia.createUser("Radndy")
+    print("akke")
+    russia.createUser("Jericho")
+    print("kake")
 
-    ##Sharp stuff
-    sharp.addFirstName("FredFred")
-    sharp.addBio("BlASTFOME")
-    sharp.addLastName("Burger")
+    print(len(russia.users))
 
-    ##Radndy stuff
-    radndy.addFirstName("Randndy")
-    radndy.addBio("I know KARATE!")
-    radndy.addLastName("Bonson")
+##    ##Sharp stuff
+##    sharp.addFirstName("FredFred")
+##    sharp.addBio("BlASTFOME")
+##    sharp.addLastName("Burger")
+##
+##    ##Radndy stuff
+##    radndy.addFirstName("Randndy")
+##    radndy.addBio("I know KARATE!")
+##    radndy.addLastName("Bonson")
 
     ##Add Radndy to Friend List
-    sharp.addFriend(radndy)
-
-    ##Radndy's Post
-    radndy.addPost("this is first pot")
-
-    ##Jericho stuff
-    jericho.addFirstName("Jericho")
-    jericho.addBio("Do you want a piece of candy?")
-    jericho.addLastName("Wanton")
-    
-    ##Add Jericho to Friends List
-    sharp.addFriend(jericho)
-
-    ##Jericho's Post
-    jericho.addPost("Tell me story ;)")
+##    sharp.addFriend(radndy)
+##
+##    ##Radndy's Post
+##    radndy.createPost("this is first pot")
+##
+####    ##Jericho stuff
+####    jericho.addFirstName("Jericho")
+####    jericho.addBio("Do you want a piece of candy?")
+####    jericho.addLastName("Wanton")
+####    
+##    ##Add Jericho to Friends List
+##    sharp.addFriend(jericho)
+##
+##    ##Jericho's Post
+##    jericho.createPost("Tell me story ;)")
 
 
 ##RUSSIAN NETWORK FUNCTIONS
 
-##The Attempt to Show Friend List Thing
-print("This is your Friend List: ")
-sharp.viewFriends()
-
-##The Attempt to Show News Feed Thing
-print("This is your News Feed: ")
-sharp.viewNewsFeed()
-
-##The Attempt to delete a friend Thing
-sharp.unFriend(jericho)
-
-##The supposively updated Friend List
-print("This is your *UPDATED* Friend List: ")
-sharp.viewFriends()
+####The Attempt to Show Friend List Thing
+##print("This is your Friend List: ")
+##sharp.viewFriends()
+##
+####The Attempt to Show News Feed Thing
+##print("This is your News Feed: ")
+##sharp.viewNewsFeed()
+##
+####The Attempt to delete a friend Thing
+##sharp.unFriend(jericho)
+##
+####The supposively updated Friend List
+##print("This is your *UPDATED* Friend List: ")
+##sharp.viewFriends()
+##
 
